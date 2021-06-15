@@ -9,8 +9,8 @@ import org.koin.core.context.loadKoinModules
 import org.koin.core.context.unloadKoinModules
 
 class BookmarkActivity : AppCompatActivity() {
-    private lateinit var decorView: View
     private lateinit var binding: ActivityBookmarkBinding
+    private lateinit var decorView: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
