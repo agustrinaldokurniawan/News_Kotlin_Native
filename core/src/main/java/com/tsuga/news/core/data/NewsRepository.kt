@@ -15,26 +15,7 @@ class NewsRepository(
     private val localDataSource: com.tsuga.news.core.data.source.local.LocalDataSource,
     private val executors: AppExecutors
 ) : INewsRepository {
-    companion object {
-        @Volatile
-        private var instance: NewsRepository? = null
-
-        fun getInstance(
-            remoteDataSource: com.tsuga.news.core.data.source.remote.RemoteDataSource,
-            localDataSource: com.tsuga.news.core.data.source.local.LocalDataSource,
-            appExecutors: AppExecutors
-        ): NewsRepository =
-            instance ?: synchronized(this) {
-                instance
-                    ?: NewsRepository(
-                        remoteDataSource,
-                        localDataSource,
-                        appExecutors
-                    )
-            }
-    }
-
-    override fun getAllNews(): Flowable<com.tsuga.news.core.data.Resource<List<News>>> =
+    override fun getAllNews(): Flowable<Resource<List<News>>> =
         object : com.tsuga.news.core.data.NetworkBoundResource<List<News>, List<NewsResponse>>(executors) {
             override fun shouldFetch(data: List<News>?): Boolean {
                 return data == null || data.isEmpty()

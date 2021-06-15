@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tsuga.news.ReadNewsActivity
+import com.tsuga.news.core.domain.model.News
 import com.tsuga.news.core.ui.NewsAdapter
 import com.tsuga.news.favorite.databinding.BookmarkFragmentBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -43,6 +44,7 @@ class BookmarkFragment : Fragment() {
 
             viewModel.news.observe(viewLifecycleOwner, {
                 newsAdapter.setData(it)
+                showNothing(it)
             })
 
             binding.etNews.addTextChangedListener(object : TextWatcher {
@@ -64,6 +66,7 @@ class BookmarkFragment : Fragment() {
                         .observe(viewLifecycleOwner, { query_data ->
                             query_data.let {
                                 newsAdapter.setData(it)
+                                showNothing(it)
                             }
                         })
                 }
@@ -80,6 +83,16 @@ class BookmarkFragment : Fragment() {
                 adapter = newsAdapter
             }
         }
+    }
+
+    private fun showNothing(it: List<News>) {
+        if (it.isEmpty()) {
+            binding.emptySearch.visibility = View.VISIBLE
+        } else {
+
+            binding.emptySearch.visibility = View.GONE
+        }
+
     }
 
     override fun onDestroy() {

@@ -4,9 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:theme="@style/Theme.News"
     android:paddingTop="40dp"
+    android:theme="@style/Theme.News"
     tools:context=".search.SearchFragment">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/empty_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:elevation="20dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/et_news"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="empty_search.json"
+        app:lottie_loop="true"
+        tools:visibility="visible" />
 
     <TextView
         android:id="@+id/tv_headline"
@@ -86,8 +100,8 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:background="#f3f3f3"
-        android:scrollbars="none"
         android:paddingBottom="75dp"
+        android:scrollbars="none"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_news"
         tools:listitem="@layout/news_item" />

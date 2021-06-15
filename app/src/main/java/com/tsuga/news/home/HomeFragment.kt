@@ -27,7 +27,7 @@ class HomeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = HomeFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -55,7 +55,7 @@ class HomeFragment : Fragment() {
                                 val randomNumber = (0..(it.data!!.size.minus(1))).random()
                                 Glide.with(view)
                                     .load(
-                                        it.data!![randomNumber].urlToImage.orEmpty()
+                                        it.data!![randomNumber].urlToImage
                                             .ifEmpty { R.drawable.empty_news })
                                     .apply(
                                         RequestOptions().transform(

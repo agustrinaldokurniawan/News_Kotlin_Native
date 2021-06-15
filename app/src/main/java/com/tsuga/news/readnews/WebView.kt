@@ -19,7 +19,7 @@ class WebView : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = WebviewBinding.inflate(layoutInflater, container, false)
         return binding.root
     }

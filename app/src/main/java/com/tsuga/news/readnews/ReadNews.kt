@@ -19,7 +19,6 @@ import com.tsuga.news.core.ui.NewsAdapter
 import com.tsuga.news.databinding.ReadNewsFragmentBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
-import java.util.*
 
 class ReadNews : Fragment() {
     private lateinit var binding: ReadNewsFragmentBinding

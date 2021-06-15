@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tsuga.news.ReadNewsActivity
+import com.tsuga.news.core.domain.model.News
 import com.tsuga.news.core.ui.NewsAdapter
 import com.tsuga.news.databinding.SearchFragmentBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -23,7 +24,7 @@ class SearchFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = SearchFragmentBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
@@ -42,6 +43,7 @@ class SearchFragment : Fragment() {
             viewModel.searchNews("").observe(viewLifecycleOwner, {
                 if (it != null) {
                     newsAdapter.setData(it)
+                    showNothing(it)
                 }
             })
 
@@ -60,9 +62,10 @@ class SearchFragment : Fragment() {
                     before: Int,
                     count: Int
                 ) {
-                    viewModel.searchNews(s.toString()).observe(viewLifecycleOwner, { query_data->
-                        query_data.let{
+                    viewModel.searchNews(s.toString()).observe(viewLifecycleOwner, { query_data ->
+                        query_data.let {
                             newsAdapter.setData(it)
+                            showNothing(it)
                         }
                     })
                 }
@@ -77,6 +80,16 @@ class SearchFragment : Fragment() {
                 layoutManager = LinearLayoutManager(context)
                 adapter = newsAdapter
             }
+        }
+
+    }
+
+    private fun showNothing(it: List<News>) {
+        if (it.isEmpty()) {
+            binding.emptySearch.visibility = View.VISIBLE
+        } else {
+
+            binding.emptySearch.visibility = View.GONE
         }
 
     }

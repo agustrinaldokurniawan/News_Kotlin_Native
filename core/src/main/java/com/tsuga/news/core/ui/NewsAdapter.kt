@@ -44,12 +44,12 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ListViewHolder>() {
         fun bind(data: News) {
             with(binding) {
                 Glide.with(itemView)
-                    .load(data.urlToImage.orEmpty().ifEmpty { R.drawable.empty_news })
+                    .load(data.urlToImage.ifEmpty { R.drawable.empty_news })
                     .placeholder(R.drawable.empty_news)
                     .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(13)))
                     .into(ivImage)
-                tvTitle.text = data.title.orEmpty().ifEmpty { "[Empty Title]" }
-                tvContent.text = data.description.orEmpty().ifEmpty { "[Empty Description]" }
+                tvTitle.text = data.title.ifEmpty { "[Empty Title]" }
+                tvContent.text = data.description.ifEmpty { "[Empty Description]" }
             }
         }
 
