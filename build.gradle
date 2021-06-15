@@ -1,0 +1,41 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    ext.kotlin_version = "1.5.10"
+    ext.retrofit_version = "2.9.0"
+    ext.logging_interceptor_version = "4.8.0"
+    ext.rxjava_version = "2.2.19"
+    ext.rxandroid_version = "2.1.1"
+    ext.lifecycle_version = "2.2.0"
+    ext.activity_ktx_version = "1.1.0"
+    ext.fragment_ktx_version = "1.2.5"
+    ext.koin_version = "2.2.3"
+
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:4.2.0"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "io.insert-koin:koin-gradle-plugin:$koin_version"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+apply plugin: 'koin'
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://www.jitpack.io' }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

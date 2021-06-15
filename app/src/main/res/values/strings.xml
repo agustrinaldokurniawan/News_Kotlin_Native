@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">News</string>
+    <string name="source">Source</string>
+    <string name="lorem_1">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
+    <string name="read_more">Read More</string>
+    <string name="headlines">Headlines</string>
+    <string name="home">Home</string>
+    <string name="desc_headlines">Find your favorite news here</string>
+    <string name="bookmark">Bookmark</string>
+<!--    <string name="desc_bookmark">Here your bokmarked news</string>-->
+    <string name="sample_date">11 Jan 2021</string>
+    <string name="lorem_2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</string>
+    <string name="recommendation">Recommendation</string>
+    <string name="search">Search</string>
+    <string name="news_poster">News Poster</string>
+    <string name="something_wrong">Something Wrong</string>
+<!--    <string name="title_favorite">Favorite</string>-->
+    <string name="button_close">Close Button</string>
+</resources>
