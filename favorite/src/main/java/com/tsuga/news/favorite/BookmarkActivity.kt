@@ -6,6 +6,7 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.tsuga.news.favorite.databinding.ActivityBookmarkBinding
 import org.koin.core.context.loadKoinModules
+import org.koin.core.context.unloadKoinModules
 
 class BookmarkActivity : AppCompatActivity() {
     private lateinit var decorView: View
@@ -29,5 +30,10 @@ class BookmarkActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .replace(R.id.bookmark_fragment_container_view, BookmarkFragment())
             .commit()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        unloadKoinModules(favoriteModule)
     }
 }
